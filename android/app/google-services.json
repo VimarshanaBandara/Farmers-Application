@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "505602896113",
+    "project_id": "farmerapplication-c4021",
+    "storage_bucket": "farmerapplication-c4021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505602896113:android:d9e42d48c390c4b702f950",
+        "android_client_info": {
+          "package_name": "com.example.tasteefood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505602896113-dl0nnor64p6etu2jlbkpedoq1hlebg38.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5-AjcCS6dV8J1TSQHgZMOfSVa9qLKV3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505602896113-dl0nnor64p6etu2jlbkpedoq1hlebg38.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
