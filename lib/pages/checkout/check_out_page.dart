@@ -101,64 +101,75 @@ class _CheckOutPageState extends State<CheckOutPage> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: cartProvider.getCartList.isEmpty
-                ? Center(
-                    child: Text("No Product"),
-                  )
-                : ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    itemCount: cartProvider.getCartList.length,
-                    itemBuilder: (ctx, index) {
-                      var data = cartProvider.cartList[index];
-                      return SingleCartItem(
-                        productId: data.productId,
-                        productCategory: data.productCategory,
-                        productImage: data.productImage,
-                        productPrice: data.productPrice,
-                        productQuantity: data.productQuantity,
-                        productName: data.productName,
-                      );
-                    },
-                  ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                ListTile(
-                  leading: Text("Sub Total"),
-                  trailing: Text("\$ $subTotal"),
-                ),
-                ListTile(
-                  leading: Text("Discount"),
-                  trailing: Text("%5"),
-                ),
-                ListTile(
-                  leading: Text("Shiping"),
-                  trailing: Text("\$10"),
-                ),
-                Divider(
-                  thickness: 2,
-                ),
-                ListTile(
-                  leading: Text("Total"),
-                  trailing: Text("\$ $totalPrice"),
-                ),
-                cartProvider.getCartList.isEmpty
-                    ? Text("")
-                    : RaisedButton(
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Address()));
-                  },
-                  child: Text('Buy'),
-                )
-              ],
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+         decoration: BoxDecoration(
+           image: DecorationImage(
+             image: AssetImage('images/Bg2.png'),
+             colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.dstATop),
+             fit: BoxFit.cover,
+           )
+         ),
+        child:  Column(
+          children: [
+            Expanded(
+              child: cartProvider.getCartList.isEmpty
+                  ? Center(
+                child: Text("No Product"),
+              )
+                  : ListView.builder(
+                physics: BouncingScrollPhysics(),
+                itemCount: cartProvider.getCartList.length,
+                itemBuilder: (ctx, index) {
+                  var data = cartProvider.cartList[index];
+                  return SingleCartItem(
+                    productId: data.productId,
+                    productCategory: data.productCategory,
+                    productImage: data.productImage,
+                    productPrice: data.productPrice,
+                    productQuantity: data.productQuantity,
+                    productName: data.productName,
+                  );
+                },
+              ),
             ),
-          )
-        ],
-      ),
+            Expanded(
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Text("Sub Total",style: TextStyle(color: Colors.black87 ,fontSize: 17.0,fontWeight: FontWeight.bold),),
+                    trailing: Text("\$ $subTotal",style: TextStyle(color: Colors.black,fontSize: 16.0,fontWeight: FontWeight.bold),),
+                  ),
+                  ListTile(
+                    leading: Text("Discount",style: TextStyle(color: Colors.black87 ,fontSize: 17.0,fontWeight: FontWeight.bold),),
+                    trailing: Text("%5",style: TextStyle(color: Colors.black,fontSize: 16.0,fontWeight: FontWeight.bold),),
+                  ),
+                  ListTile(
+                    leading: Text("Shiping",style: TextStyle(color: Colors.black87 ,fontSize: 17.0,fontWeight: FontWeight.bold),),
+                    trailing: Text("\$10",style: TextStyle(color: Colors.black,fontSize: 16.0,fontWeight: FontWeight.bold),),
+                  ),
+                  Divider(
+                    thickness: 2,
+                  ),
+                  ListTile(
+                    leading: Text("Total",style: TextStyle(color: Colors.blue ,fontSize: 17.0,fontWeight: FontWeight.bold),),
+                    trailing: Text("\$ $totalPrice",style: TextStyle(color: Colors.red,fontSize: 16.0,fontWeight: FontWeight.bold),),
+                  ),
+                  cartProvider.getCartList.isEmpty
+                      ? Text("")
+                      : RaisedButton(
+                    color: Colors.yellowAccent,
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> Address()));
+                    },
+                    child: Text('Buy',style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold , fontSize: 16.0),),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      )
     );
   }
 }

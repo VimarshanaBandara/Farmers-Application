@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:tasteefood/pages/payments/card_payments.dart';
 
 class Address extends StatefulWidget {
   const Address({Key? key}) : super(key: key);
@@ -30,72 +31,87 @@ class _AddressState extends State<Address> {
             fit: BoxFit.fill
           )
         ),
-        child: Form(
-          //key: formkey,
-          child: Container(
-            padding: EdgeInsets.all(30.0),
-            child: Column(
+        child: SingleChildScrollView(
+          child: Form(
+            //key: formkey,
+            child: Container(
+              padding: EdgeInsets.all(30.0),
+              child: Column(
 
-              children: [
-                TextFormField(
-                  controller: sampledata1,
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.account_circle,color:Colors.black87),
-                      hintText: "Name",
-                      hintStyle: TextStyle(
-                        color: Colors.black45,
-                      )
-                  ),
-
-                ),
-                SizedBox(
-                  height: 25.0,
-                ),
-                TextFormField(
-                  controller: sampledata2,
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.phone,color:Colors.black87),
-                      hintText: "Contact No",
-                      hintStyle: TextStyle(
-                        color: Colors.black45,
-                      )
+                children: [
+                  TextFormField(
+                    controller: sampledata1,
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.account_circle,color:Colors.black87),
+                        hintText: "Name",
+                        hintStyle: TextStyle(
+                          color: Colors.black45,
+                          fontWeight: FontWeight.bold,
+                        )
+                    ),
 
                   ),
+                  SizedBox(
+                    height: 25.0,
+                  ),
+                  TextFormField(
+                    controller: sampledata2,
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.phone,color:Colors.black87),
+                        hintText: "Contact No",
 
-                ),
-                SizedBox(
-                  height: 25.0,
-                ),
-                TextFormField(
-                  controller: sampledata3,
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.location_city,color:Colors.black87),
-                      hintText: "Delivery Address",
-                      hintStyle: TextStyle(
-                        color: Colors.black45,
-                      )
+                        hintStyle: TextStyle(
+                          color: Colors.black45,
+                          fontWeight: FontWeight.bold,
+                        )
+
+                    ),
+
+                  ),
+                  SizedBox(
+                    height: 25.0,
+                  ),
+                  TextFormField(
+                    controller: sampledata3,
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.location_city,color:Colors.black87),
+                        hintText: "Delivery Address",
+                        hintStyle: TextStyle(
+                          color: Colors.black45,
+                          fontWeight: FontWeight.bold,
+                        )
+
+                    ),
 
                   ),
 
-                ),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  FlatButton(
+                    onPressed: (){
+                      Map<String,dynamic>data={"field1":sampledata1.text , "field2":sampledata2.text, "field3":sampledata3.text  };
+                      FirebaseFirestore.instance.collection("test").add(data);
+                    },
+                    color: Colors.greenAccent[200],
+                    child: Text('Store Order',style: TextStyle(fontWeight: FontWeight.bold),),
+                  ),
 
-                SizedBox(
-                  height: 30.0,
-                ),
-                FlatButton(
-                  onPressed: (){
-                    Map<String,dynamic>data={"field1":sampledata1.text , "field2":sampledata2.text, "field3":sampledata3.text  };
-                    FirebaseFirestore.instance.collection("test").add(data);
-                  },
-                  color: Colors.greenAccent[200],
-                  child: Text('Store Order'),
-                ),
-              ],
+                  RaisedButton(
+                    onPressed: (){
+
+                    },
+                    child: Text('Pay',style: TextStyle(fontWeight: FontWeight.bold),),
+                  )
+                ],
+              ),
             ),
           ),
-        ),
+        )
       )
     );
 
   }
 }
+
+

@@ -33,34 +33,24 @@ class EndPart extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        GestureDetector(
-          onTap: () {
+
+        RaisedButton.icon(
+          onPressed:  () {
             RoutingPage.goTonext(
               context: context,
               navigateTo: SignupPage(),
             );
           },
-          child: Text(
-            "SIGNUP",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 18.0,
-              shadows: <Shadow>[
-                Shadow(
-                  offset: Offset(2.0, 2.0),
-                  blurRadius: 3.0,
-                  color: Colors.black87,
-                ),
-                Shadow(
-                  offset: Offset(2.0, 2.0),
-                  blurRadius: 8.0,
-                  color: Colors.black87,
-                ),
-              ],
-            ),
-          ),
-        )
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          label: Text('SIGN UP',
+            style: TextStyle(color: Colors.black,fontSize: 18.0,fontWeight: FontWeight.bold),),
+          icon: Icon(Icons.wysiwyg, color:Colors.black,),
+          textColor: Colors.white,
+          splashColor: Colors.red,
+          color: Colors.yellow,),
+
+
       ],
     );
   }

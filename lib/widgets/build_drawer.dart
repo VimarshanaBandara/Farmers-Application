@@ -18,15 +18,21 @@ class BuildDrawer extends StatelessWidget {
         children: [
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.purple,
+             // color: Colors.purple,
+              image: DecorationImage(
+                image: AssetImage('images/Bg2.png'),
+                fit: BoxFit.cover,
+                colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
+              )
             ),
-            accountName: Text(userModel.fullName),
-            accountEmail: Text(userModel.emailAddress),
+            accountName: Text(userModel.fullName , style: TextStyle(color: Colors.blue , fontWeight: FontWeight.bold,fontSize: 18.0),),
+            accountEmail: Text(userModel.emailAddress , style: TextStyle(color: Colors.black87 , fontWeight: FontWeight.bold ,fontSize: 15.0),),
             currentAccountPicture: CircleAvatar(
               backgroundImage: AssetImage("images/non_profile.jpg"),
             ),
           ),
           ListTile(
+            hoverColor: Colors.red,
             onTap: () {
               RoutingPage.goTonext(
                 context: context,

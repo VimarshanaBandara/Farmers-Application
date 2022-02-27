@@ -44,7 +44,7 @@ class SecondPart extends StatelessWidget {
           ),
           Row(
             children: [
-              Text("\$$productPrice"),
+              Text("\$$productPrice",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15.0),),
               SizedBox(
                 width: 20,
               ),
@@ -52,6 +52,8 @@ class SecondPart extends StatelessWidget {
                 "\$$productOldPrice",
                 style: TextStyle(
                   decoration: TextDecoration.lineThrough,
+                   fontWeight: FontWeight.bold,
+                    fontSize: 15.0,
                 ),
               ),
             ],
@@ -101,7 +103,7 @@ class SecondPart extends StatelessWidget {
           ),
           Text(
             productDescription,
-            style: TextStyle(),
+            style: TextStyle(fontSize: 15.0),
           ),
           MyButton(
             onPressed: () {

@@ -25,6 +25,7 @@ class CenterPart extends StatelessWidget {
           controller: email,
           decoration: InputDecoration(
             hintText: "Email",
+            hintStyle: TextStyle( fontWeight: FontWeight.bold)
           ),
         ),
         TextFormField(
@@ -42,10 +43,13 @@ class CenterPart extends StatelessWidget {
                 "Forgot Password?",
                 style: TextStyle(
                   color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                  fontSize:15.0,
                 ),
               ),
             ),
             hintText: "Password",
+          hintStyle: TextStyle( fontWeight: FontWeight.bold),
             suffixIcon: IconButton(onPressed: onPressed, icon: icon),
           ),
         ),

@@ -52,12 +52,14 @@ class _SignupPageState extends State<SignupPage> {
                       controller: fullName,
                       decoration: InputDecoration(
                         hintText: "Full name",
+                        hintStyle: TextStyle(fontWeight: FontWeight.bold)
                       ),
                     ),
                     TextFormField(
                       controller: emailAddress,
                       decoration: InputDecoration(
                         hintText: "Email address",
+                          hintStyle: TextStyle(fontWeight: FontWeight.bold)
                       ),
                     ),
                     TextFormField(
@@ -65,6 +67,7 @@ class _SignupPageState extends State<SignupPage> {
                       controller: password,
                       decoration: InputDecoration(
                         hintText: "Password",
+                          hintStyle: TextStyle(fontWeight: FontWeight.bold),
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {

@@ -14,11 +14,8 @@ class TopPart extends StatelessWidget {
 
             Text(
               "Login",
-              style: TextStyle(
-                color: AppColors.KblackColor,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),
+
             )
           ],
         ),

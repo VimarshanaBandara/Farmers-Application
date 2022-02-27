@@ -17,7 +17,7 @@ class WelcomePage extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage('images/Bg.png'),
-              fit: BoxFit.cover, colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.9), BlendMode.dstATop),
+              fit: BoxFit.cover, colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.8), BlendMode.dstATop),
             )
           ),
           child:Padding(

@@ -20,16 +20,13 @@ class _LoginPageState extends State<LoginPage> {
     LoginAuthProvider loginAuthProvider =
         Provider.of<LoginAuthProvider>(context);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('images/Bg.png'),
+            colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.9), BlendMode.dstATop),
             fit: BoxFit.fill,
           )
         ),
