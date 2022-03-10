@@ -42,7 +42,7 @@ class _MainMenuState extends State<MainMenu> {
 
                     child: Image.asset('images/btn2.png',width: 300.0,height: 260,),
                       onTap: (){
-                        //Navigator.push(context, MaterialPageRoute(builder: (context)=>DetectScreen()));
+                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>DetectScreen()));
                       }
 
                   ),

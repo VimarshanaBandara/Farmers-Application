@@ -25,37 +25,37 @@ class _CartPageState extends State<CartPage> {
       bottomNavigationBar: cartProvider.getCartList.isEmpty
           ? Text("")
           : MyButton(
-              text: "Check Out",
-              onPressed: () {
-                RoutingPage.goTonext(
-                  context: context,
-                  navigateTo: CheckOutPage(),
-                );
-              },
-            ),
+        text: "Check Out",
+        onPressed: () {
+          RoutingPage.goTonext(
+            context: context,
+            navigateTo: CheckOutPage(),
+          );
+        },
+      ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: cartProvider.getCartList.isEmpty
           ? Center(
-              child: Text("No Product"),
-            )
+        child: Text("No Product"),
+      )
           : ListView.builder(
-              physics: BouncingScrollPhysics(),
-              itemCount: cartProvider.getCartList.length,
-              itemBuilder: (ctx, index) {
-                var data = cartProvider.cartList[index];
-                return SingleCartItem(
-                  productId: data.productId,
-                  productCategory: data.productCategory,
-                  productImage: data.productImage,
-                  productPrice: data.productPrice,
-                  productQuantity: data.productQuantity,
-                  productName: data.productName,
-                );
-              },
-            ),
+        physics: BouncingScrollPhysics(),
+        itemCount: cartProvider.getCartList.length,
+        itemBuilder: (ctx, index) {
+          var data = cartProvider.cartList[index];
+          return SingleCartItem(
+            productId: data.productId,
+            productCategory: data.productCategory,
+            productImage: data.productImage,
+            productPrice: data.productPrice,
+            productQuantity: data.productQuantity,
+            productName: data.productName,
+          );
+        },
+      ),
     );
   }
 }

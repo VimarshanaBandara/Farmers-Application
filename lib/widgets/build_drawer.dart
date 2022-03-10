@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tasteefood/pages/cartPage/cart_page.dart';
+import 'package:tasteefood/pages/customer_reviews/customerReviews.dart';
 import 'package:tasteefood/pages/favorite/favorite_page.dart';
 import 'package:tasteefood/pages/home/home_page.dart';
 import 'package:tasteefood/pages/login/login_page.dart';
@@ -78,6 +79,21 @@ class BuildDrawer extends StatelessWidget {
             onTap: () {
               FirebaseAuth.instance.signOut().then(
                     (value) => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => CustomerReviews(),
+                  ),
+                ),
+              );
+            },
+            leading: Icon(
+              Icons.add_comment_sharp,
+            ),
+            title: Text("Customer Reviews"),
+          ),
+          ListTile(
+            onTap: () {
+              FirebaseAuth.instance.signOut().then(
+                    (value) => Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => LoginPage(),
                       ),
@@ -88,7 +104,8 @@ class BuildDrawer extends StatelessWidget {
               Icons.exit_to_app,
             ),
             title: Text("Log out"),
-          )
+          ),
+
         ],
       ),
     );

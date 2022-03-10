@@ -42,13 +42,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     .sendPasswordResetEmail(email: email!)
                     .whenComplete(
                       () => ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            "An email has been send $email to please verify",
-                          ),
-                        ),
+                    SnackBar(
+                      content: Text(
+                        "An email has been send $email to please verify",
                       ),
-                    );
+                    ),
+                  ),
+                );
                 Navigator.pop(context);
               },
               text: "Send Request",
