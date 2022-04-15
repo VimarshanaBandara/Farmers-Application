@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:tasteefood/pages/payments/card_payments.dart';
 
 class Address extends StatefulWidget {
@@ -19,8 +20,18 @@ class _AddressState extends State<Address> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Delivery Contacts',style: TextStyle(color: Colors.blue , fontWeight: FontWeight.bold),),
-          backgroundColor: Colors.white,
+          title: Text('Delivery Contacts',style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.pink , Colors.lightGreenAccent],
+                    begin: const FractionalOffset(0.0,0.0),
+                    end: const FractionalOffset(1.0,0.0),
+                    stops: [0.0,1.0],
+                    tileMode: TileMode.clamp
+                )
+            ),
+          ),
         ),
         body: Container(
             width: MediaQuery.of(context).size.width,
@@ -92,6 +103,7 @@ class _AddressState extends State<Address> {
                         onPressed: (){
                           Map<String,dynamic>data={"field1":sampledata1.text , "field2":sampledata2.text, "field3":sampledata3.text  };
                           FirebaseFirestore.instance.collection("test").add(data);
+                          _displaySuccessToast(context);
                         },
                         color: Colors.greenAccent[200],
                         child: Text('Store Order',style: TextStyle(fontWeight: FontWeight.bold),),
@@ -109,3 +121,9 @@ class _AddressState extends State<Address> {
   }
 }
 
+void _displaySuccessToast(context){
+  MotionToast.success(
+      title: Text("Success",style: TextStyle(fontWeight: FontWeight.bold),),
+      description: Text("Successful Payment")
+  ).show(context);
+}

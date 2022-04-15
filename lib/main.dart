@@ -6,6 +6,7 @@ import 'package:tasteefood/pages/menu/mainmenu.dart';
 import 'package:tasteefood/pages/provider/cart_provider.dart';
 import 'package:tasteefood/pages/provider/favorite_provider.dart';
 import 'package:tasteefood/pages/signup/components/signup_auth_provider.dart';
+import 'package:tasteefood/pages/splash_screen/splash_screen.dart';
 import 'package:tasteefood/pages/welcome/welcome_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -21,7 +22,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -55,9 +56,9 @@ class MyApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, userSnp) {
             if (userSnp.hasData) {
-              return MainMenu();
+              return SplashScreen();
             }
-            return WelcomePage();
+            return SplashScreen();
           },
         ),
         // home: SignupPage(),

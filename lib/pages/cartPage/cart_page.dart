@@ -34,7 +34,17 @@ class _CartPageState extends State<CartPage> {
         },
       ),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Colors.pink , Colors.lightGreenAccent],
+                  begin: const FractionalOffset(0.0,0.0),
+                  end: const FractionalOffset(1.0,0.0),
+                  stops: [0.0,1.0],
+                  tileMode: TileMode.clamp
+              )
+          ),
+        ),
         elevation: 0,
       ),
       body: cartProvider.getCartList.isEmpty

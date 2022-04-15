@@ -4,6 +4,7 @@ import 'package:tasteefood/appColors/app_colors.dart';
 import 'package:tasteefood/pages/Delivery/address.dart';
 import 'package:tasteefood/pages/payments/card_payments.dart';
 import 'package:tasteefood/pages/provider/cart_provider.dart';
+import 'package:tasteefood/route/routing_page.dart';
 import 'package:tasteefood/widgets/my_button.dart';
 import 'package:tasteefood/widgets/single_cart_item.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -93,12 +94,22 @@ class _CheckOutPageState extends State<CheckOutPage> {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.transparent,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.pink , Colors.lightGreenAccent],
+                    begin: const FractionalOffset(0.0,0.0),
+                    end: const FractionalOffset(1.0,0.0),
+                    stops: [0.0,1.0],
+                    tileMode: TileMode.clamp
+                )
+            ),
+          ),
           centerTitle: true,
           title: Text(
             "Check out",
             style: TextStyle(
-              color: AppColors.KblackColor,
+              color: Colors.white,
             ),
           ),
         ),
@@ -158,13 +169,16 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     ),
                     cartProvider.getCartList.isEmpty
                         ? Text("")
-                        : RaisedButton(
-                      color: Colors.yellowAccent,
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> MySample()));
+                        :  MyButton(
+                      onPressed: () {
+
+                        RoutingPage.goTonext(
+                          context: context,
+                          navigateTo: MySample(),
+                        );
                       },
-                      child: Text('Buy',style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold , fontSize: 16.0),),
-                    )
+                      text: "Buy",
+                    ),
                   ],
                 ),
               )

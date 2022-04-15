@@ -5,7 +5,9 @@ import 'package:flutter_credit_card/credit_card_model.dart';
 import 'package:flutter_credit_card/credit_card_widget.dart';
 import 'package:flutter_credit_card/custom_card_type_icon.dart';
 import 'package:flutter_credit_card/glassmorphism_config.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:tasteefood/pages/Delivery/address.dart';
+import 'package:tasteefood/pages/checkout/check_out_page.dart';
 
 class MySample extends StatefulWidget {
   @override
@@ -45,12 +47,28 @@ class MySampleState extends State<MySample> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
+        appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.blue , Colors.lightBlueAccent],
+                    begin: const FractionalOffset(0.0,0.0),
+                    end: const FractionalOffset(1.0,0.0),
+                    stops: [0.0,1.0],
+                    tileMode: TileMode.clamp
+                )
+            ),
+          ),
+          title: Text('Payment Methods'),
+          centerTitle: true,
+          
+        ),
         resizeToAvoidBottomInset: false,
         body: Container(
           decoration: BoxDecoration(
             image: !useBackgroundImage
                 ?  DecorationImage(
-              image: AssetImage('images/bg.png'),
+              image: AssetImage('images/bg23.png'),
               fit: BoxFit.cover,
             )
                 : null,
@@ -73,7 +91,7 @@ class MySampleState extends State<MySample> {
                   obscureCardNumber: true,
                   obscureCardCvv: true,
                   isHolderNameVisible: true,
-                  cardBgColor: Colors.red,
+                  cardBgColor: Colors.blue,
                   backgroundImage:
                   useBackgroundImage ? 'images/card_bg.png' : null,
                   isSwipeGestureEnabled: true,
@@ -104,35 +122,35 @@ class MySampleState extends State<MySample> {
                           isExpiryDateVisible: true,
                           cardHolderName: cardHolderName,
                           expiryDate: expiryDate,
-                          themeColor: Colors.red,
+                          themeColor: Colors.blue,
                           textColor: Colors.white,
                           cardNumberDecoration: InputDecoration(
                             labelText: 'Number',
                             hintText: 'XXXX XXXX XXXX XXXX',
-                            hintStyle: const TextStyle(color: Colors.white ,fontWeight: FontWeight.bold),
-                            labelStyle: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                            hintStyle: const TextStyle(color: Colors.black ,fontWeight: FontWeight.bold),
+                            labelStyle: const TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
                             focusedBorder: border,
                             enabledBorder: border,
                           ),
                           expiryDateDecoration: InputDecoration(
-                            hintStyle: const TextStyle(color: Colors.white ,fontWeight: FontWeight.bold),
-                            labelStyle: const TextStyle(color: Colors.white ,fontWeight: FontWeight.bold),
+                            hintStyle: const TextStyle(color: Colors.black ,fontWeight: FontWeight.bold),
+                            labelStyle: const TextStyle(color: Colors.black ,fontWeight: FontWeight.bold),
                             focusedBorder: border,
                             enabledBorder: border,
                             labelText: 'Expired Date',
                             hintText: 'XX/XX',
                           ),
                           cvvCodeDecoration: InputDecoration(
-                            hintStyle: const TextStyle(color: Colors.white ,fontWeight: FontWeight.bold),
-                            labelStyle: const TextStyle(color: Colors.white ,fontWeight: FontWeight.bold),
+                            hintStyle: const TextStyle(color: Colors.black ,fontWeight: FontWeight.bold),
+                            labelStyle: const TextStyle(color: Colors.black ,fontWeight: FontWeight.bold),
                             focusedBorder: border,
                             enabledBorder: border,
                             labelText: 'CVV',
                             hintText: 'XXX',
                           ),
                           cardHolderDecoration: InputDecoration(
-                            hintStyle: const TextStyle(color: Colors.white ,fontWeight: FontWeight.bold),
-                            labelStyle: const TextStyle(color: Colors.white ,fontWeight: FontWeight.bold),
+                            hintStyle: const TextStyle(color: Colors.black ,fontWeight: FontWeight.bold),
+                            labelStyle: const TextStyle(color: Colors.black ,fontWeight: FontWeight.bold),
                             focusedBorder: border,
                             enabledBorder: border,
                             labelText: 'Card Holder',
@@ -142,48 +160,7 @@ class MySampleState extends State<MySample> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            const Text(
-                              'Glassmorphism',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                              ),
-                            ),
-                            Switch(
-                              value: useGlassMorphism,
-                              inactiveTrackColor: Colors.grey,
-                              activeColor: Colors.white,
-                              activeTrackColor: Colors.green,
-                              onChanged: (bool value) => setState(() {
-                                useGlassMorphism = value;
-                              }),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            const Text(
-                              'Card Image',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                              ),
-                            ),
-                            Switch(
-                              value: useBackgroundImage,
-                              inactiveTrackColor: Colors.grey,
-                              activeColor: Colors.white,
-                              activeTrackColor: Colors.green,
-                              onChanged: (bool value) => setState(() {
-                                useBackgroundImage = value;
-                              }),
-                            ),
-                          ],
-                        ),
+
                         const SizedBox(
                           height: 20,
                         ),
@@ -207,12 +184,10 @@ class MySampleState extends State<MySample> {
                             ),
                           ),
                           onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> Address()));
-                            } else {
-                              print('invalid!');
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Address()));
+                    _displaySuccessToast(context);
                             }
-                          },
+
                         ),
                       ],
                     ),
@@ -235,4 +210,11 @@ class MySampleState extends State<MySample> {
       isCvvFocused = creditCardModel.isCvvFocused;
     });
   }
+}
+
+void _displaySuccessToast(context){
+  MotionToast.success(
+      title: Text("Success",style: TextStyle(fontWeight: FontWeight.bold),),
+      description: Text("Successful Payment")
+  ).show(context);
 }

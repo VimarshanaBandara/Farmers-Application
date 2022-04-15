@@ -20,49 +20,55 @@ class _LoginPageState extends State<LoginPage> {
     LoginAuthProvider loginAuthProvider =
         Provider.of<LoginAuthProvider>(context);
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('images/Bg.png'),
-            colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.9), BlendMode.dstATop),
-            fit: BoxFit.fill,
-          )
-        ),
-        child:  Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              // top part/
-              TopPart(),
-              // center part
-              CenterPart(
-                email: email,
-                password: password,
-                obscureText: visible,
-                onPressed: () {
-                  setState(() {
-                    visible = !visible;
-                  });
-                },
-                icon: Icon(
-                  visible ? Icons.visibility_off : Icons.visibility,
+
+      body: SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.pink , Colors.lightGreenAccent],
+                begin: Alignment.topRight,
+                end:Alignment.bottomLeft,
+
+
+              )
+
+          ),
+          child:  Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // top part/
+                TopPart(),
+                // center part
+                CenterPart(
+                  email: email,
+                  password: password,
+                  obscureText: visible,
+                  onPressed: () {
+                    setState(() {
+                      visible = !visible;
+                    });
+                  },
+                  icon: Icon(
+                    visible ? Icons.visibility_off : Icons.visibility,
+                  ),
                 ),
-              ),
-              //end part
-              EndPart(
-                loading: loginAuthProvider.loading,
-                onPressed: () {
-                  loginAuthProvider.loginPageVaidation(
-                    emailAdress: email,
-                    password: password,
-                    context: context,
-                  );
-                },
-              ),
-            ],
+                //end part
+                EndPart(
+                  loading: loginAuthProvider.loading,
+                  onPressed: () {
+                    loginAuthProvider.loginPageVaidation(
+                      emailAdress: email,
+                      password: password,
+                      context: context,
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       )

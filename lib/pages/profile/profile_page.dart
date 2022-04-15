@@ -25,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget textFromField({required String hintText}) {
     return Container(
-      height: 50,
+      height: 60,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -80,11 +80,11 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ),
         SizedBox(
-          height: 10,
+          height: 15,
         ),
         textFromField(hintText: userModel.fullName),
         SizedBox(
-          height: 10,
+          height: 15,
         ),
         textFromField(hintText: userModel.emailAddress),
       ],
@@ -107,6 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
           controller: fullName,
           decoration: InputDecoration(hintText: "fullName"),
         ),
+        SizedBox(height: 15.0,),
         TextFormField(
           controller: emailAddress,
           decoration: InputDecoration(
@@ -114,7 +115,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
         ),
         SizedBox(
-          height: 10,
+          height: 15,
         ),
         MyButton(
           onPressed: () {
@@ -151,8 +152,18 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Colors.pink , Colors.lightGreenAccent],
+                  begin: const FractionalOffset(0.0,0.0),
+                  end: const FractionalOffset(1.0,0.0),
+                  stops: [0.0,1.0],
+                  tileMode: TileMode.clamp
+              )
+          ),
+        ),
+        title: Text('Edit Profile'),
         leading: isEdit
             ? IconButton(
                 onPressed: () {

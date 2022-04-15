@@ -19,7 +19,7 @@ class EndPart extends StatelessWidget {
             ? CircularProgressIndicator()
             : MyButton(
                 onPressed: onPressed,
-                text: "LOG IN",
+                text: "LOG IN"
               ),
         SizedBox(
           height: 20,

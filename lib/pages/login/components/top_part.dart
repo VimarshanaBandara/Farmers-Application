@@ -12,11 +12,10 @@ class TopPart extends StatelessWidget {
         Column(
           children: [
 
-            Text(
-              "Login",
-              style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),
-
-            )
+            Container(
+              alignment: Alignment.bottomCenter,
+              child: Image.asset('images/login.png',height: 260.0,width: 260.0,),
+            ),
           ],
         ),
       ],

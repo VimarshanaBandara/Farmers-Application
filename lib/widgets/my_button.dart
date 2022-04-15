@@ -40,7 +40,10 @@ class _MyButtonState extends State<MyButton> {
           child: Text(
             widget.text,
             style: TextStyle(
-              color: AppColors.KwhiteColor,
+              //color: AppColors.KblackColor,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 17.0,
             ),
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:motion_toast/motion_toast.dart';
 import 'package:pushable_button/pushable_button.dart';
 class CustomerReviews extends StatefulWidget {
   const CustomerReviews({Key? key}) : super(key: key);
@@ -72,6 +73,7 @@ class _CustomerReviewsState extends State<CustomerReviews> {
                   onPressed: (){
                     Map<String,dynamic>data={"field1":customerreview1.text   };
                     FirebaseFirestore.instance.collection("CustomerReviews").add(data);
+                    _displaySuccessToast(context);
                   },
                 )
               )
@@ -82,4 +84,9 @@ class _CustomerReviewsState extends State<CustomerReviews> {
       )
     );
   }
+} void _displaySuccessToast(context){
+  MotionToast.success(
+      title: Text("Success",style: TextStyle(fontWeight: FontWeight.bold),),
+      description: Text("This is Success Toast")
+  ).show(context);
 }

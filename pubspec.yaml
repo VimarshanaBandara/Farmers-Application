@@ -35,6 +35,8 @@ dependencies:
   razorpay_flutter: ^1.2.3
   flutter_credit_card: ^3.0.1
   pushable_button: ^0.0.3
+  motion_toast: any
+  flutter_credit_card_new: ^0.0.4
 
 
 
@@ -78,6 +80,15 @@ flutter:
     - images/visa.png
     - images/bg.png
     - images/customerReviews.png
+    - images/login.png
+    - images/signup.png
+    - images/sp.png
+    - AGRI/IM01.PNG
+    - AGRI/IM02.PNG
+    - AGRI/IM03.JPG
+    - AGRI/IM04.JPG
+    - AGRI/sp1.png
+    - AGRI/b01.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

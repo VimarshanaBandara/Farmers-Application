@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tasteefood/appColors/app_colors.dart';
+import 'package:tasteefood/pages/AGRI/details.dart';
 import 'package:tasteefood/pages/cartPage/cart_page.dart';
 import 'package:tasteefood/route/routing_page.dart';
 import 'package:tasteefood/widgets/my_button.dart';
@@ -56,6 +57,13 @@ class SecondPart extends StatelessWidget {
                   fontSize: 15.0,
                 ),
               ),
+              SizedBox(width: 160.0,),
+              OutlineButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailsHoney1()));
+                },
+                child: Text('More About'),
+              )
             ],
           ),
           Column(

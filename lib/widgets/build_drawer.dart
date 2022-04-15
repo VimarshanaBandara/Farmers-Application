@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tasteefood/pages/AGRI/about_us.dart';
+import 'package:tasteefood/pages/AGRI/contact_us.dart';
+import 'package:tasteefood/pages/AGRI/privacy_policy.dart';
 import 'package:tasteefood/pages/cartPage/cart_page.dart';
 import 'package:tasteefood/pages/customer_reviews/customerReviews.dart';
 import 'package:tasteefood/pages/favorite/favorite_page.dart';
@@ -21,7 +24,7 @@ class BuildDrawer extends StatelessWidget {
             decoration: BoxDecoration(
              // color: Colors.purple,
               image: DecorationImage(
-                image: AssetImage('images/Bg2.png'),
+                image: AssetImage('AGRI/b01.png'),
                 fit: BoxFit.cover,
                 colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
               )
@@ -69,12 +72,7 @@ class BuildDrawer extends StatelessWidget {
             ),
             title: Text("Favorite"),
           ),
-          ListTile(
-            leading: Icon(
-              Icons.shopping_basket_sharp,
-            ),
-            title: Text("My Order"),
-          ),
+
           ListTile(
             onTap: () {
               FirebaseAuth.instance.signOut().then(
@@ -90,6 +88,51 @@ class BuildDrawer extends StatelessWidget {
             ),
             title: Text("Customer Reviews"),
           ),
+          ListTile(
+            onTap: () {
+              FirebaseAuth.instance.signOut().then(
+                    (value) => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => AboutUs(),
+                  ),
+                ),
+              );
+            },
+            leading: Icon(
+              Icons.exit_to_app,
+            ),
+            title: Text("About us"),
+          ), //ABOUT US
+          ListTile(
+            onTap: () {
+              FirebaseAuth.instance.signOut().then(
+                    (value) => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ContactUs(),
+                  ),
+                ),
+              );
+            },
+            leading: Icon(
+              Icons.exit_to_app,
+            ),
+            title: Text("Contact us"),
+          ),
+          ListTile(
+            onTap: () {
+              FirebaseAuth.instance.signOut().then(
+                    (value) => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => PrivacyHome(),
+                  ),
+                ),
+              );
+            },
+            leading: Icon(
+              Icons.exit_to_app,
+            ),
+            title: Text("Privacy & Policy"),
+          ),//CONTACT US
           ListTile(
             onTap: () {
               FirebaseAuth.instance.signOut().then(
